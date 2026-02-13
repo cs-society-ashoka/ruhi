@@ -5,28 +5,28 @@
 
 export const config = {
   /** Your name */
-  senderName: "Granthana",
+  senderName: "Ruhi",
 
   /** Your Valentine's name */
-  recipientName: "Ivirah",
+  recipientName: "Themika",
 
   /** Your personal message (used in Mixtape lyrics, Sealed Letter, etc.) */
   message:
-    "-",
+    "The last 10 months have been the happiest of my life. I can’t wait for the rest of our lives together. You make me SO happy. I love you ",
 
   /** Photo URLs for photo-heavy templates (Memory Cloud, Mixtape, 90s Desktop) */
   photos: [
-    "photos/photo1.jpeg",
-    "photos/photo2.jpeg",
-    "photos/photo3.jpeg",
-    "photos/photo4.png",
-    "photos/photo5.jpeg",
-    "photos/photo6.png",
-    "photos/photo7.jpeg",
-    "photos/photo8.jpeg",
+    "photos/818e3993-ea0d-4a5b-a139-68fbce9f2468 - Ruhi Mahesh.jpeg",
+    "photos/2129c00a-8dd6-4e46-bf4b-3ae23b7a6bc2 - Ruhi Mahesh.jpeg",
+    "photos/A19AC22C-CF7B-4CFE-8BC7-A68B0B231F08 - Ruhi Mahesh.jpeg",
+    "photos/D582F04C-A166-401F-ADD4-38FE7338C036 - Ruhi Mahesh.jpeg",
+    "photos/IMG_0913 - Ruhi Mahesh.jpeg",
+    "photos/IMG_1205 - Ruhi Mahesh.jpeg",
+    "photos/IMG_2335 - Ruhi Mahesh.jpeg",
+    "photos/818e3993-ea0d-4a5b-a139-68fbce9f2468 - Ruhi Mahesh.jpeg",
 ],
 logo: "photos/logo.png",
-audioUrl: "audio/final_audio.mp3",
+audioUrl: "audio/Ed Sheeran - Perfect.mp3",
 
   /** Receipt line items for "The Love Receipt" template */
   receiptItems: [
