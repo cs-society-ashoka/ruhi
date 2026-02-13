@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { config } from "@/config";
@@ -16,6 +16,18 @@ const DesktopSimulator = () => {
   const [closedErrors, setClosedErrors] = useState<number[]>([]);
   const [bsod, setBsod] = useState(false);
   const [bsodPink, setBsodPink] = useState(false);
+  const skipRef = useRef<HTMLButtonElement>(null);
+
+  const handleSkipHover = () => {
+    if (!skipRef.current) return;
+    const btn = skipRef.current;
+    const maxX = window.innerWidth - 120;
+    const maxY = window.innerHeight - 60;
+    btn.style.position = "fixed";
+    btn.style.left = `${20 + Math.random() * maxX}px`;
+    btn.style.top = `${20 + Math.random() * maxY}px`;
+    btn.style.zIndex = "999";
+  };
 
   const closeError = (idx: number) => {
     const next = [...closedErrors, idx];
@@ -286,7 +298,7 @@ const DesktopSimulator = () => {
                     />
                   ))}
                 </div>
-                
+
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="relative z-10">
                   <p className="mb-4 text-sm uppercase tracking-widest text-white/70">
                     System Failure
@@ -310,8 +322,10 @@ const DesktopSimulator = () => {
                     >
                       Yes! 💙
                     </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 0.9, opacity: 0.5 }}
+                    <button
+                      ref={skipRef}
+                      onMouseEnter={handleSkipHover}
+                      onTouchStart={handleSkipHover}
                       className="border-2 px-6 py-3 font-bold"
                       style={{
                         borderColor: "rgba(255,255,255,0.3)",
@@ -319,7 +333,7 @@ const DesktopSimulator = () => {
                       }}
                     >
                       Ctrl+Z
-                    </motion.button>
+                    </button>
                   </div>
                   <p className="mt-6 text-sm text-white/50">— {config.senderName}</p>
                 </motion.div>

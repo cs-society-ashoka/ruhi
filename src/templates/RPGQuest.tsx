@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { config } from "@/config";
@@ -12,8 +12,20 @@ const RPGQuest = () => {
   const [lootText, setLootText] = useState("");
   const [lootDone, setLootDone] = useState(false);
   const [equipped, setEquipped] = useState(false);
+  const skipRef = useRef<HTMLButtonElement>(null);
 
   const fullLootText = `You found ${config.rpgLoot}! ${config.recipientName}, will you equip it?`;
+
+  const handleSkipHover = () => {
+    if (!skipRef.current) return;
+    const btn = skipRef.current;
+    const maxX = window.innerWidth - 120;
+    const maxY = window.innerHeight - 60;
+    btn.style.position = "fixed";
+    btn.style.left = `${20 + Math.random() * maxX}px`;
+    btn.style.top = `${20 + Math.random() * maxY}px`;
+    btn.style.zIndex = "999";
+  };
 
   // Character movement
   const moveChar = useCallback(() => {
@@ -275,13 +287,15 @@ const RPGQuest = () => {
                 >
                   Yes! Equip ⚔️
                 </motion.button>
-                <motion.button
-                  whileHover={{ scale: 0.9, opacity: 0.5 }}
+                <button
+                  ref={skipRef}
+                  onMouseEnter={handleSkipHover}
+                  onTouchStart={handleSkipHover}
                   className="border-2 px-6 py-3 font-bold"
                   style={{ borderColor: "#3d8b37", color: "#3d8b37" }}
                 >
                   Drop
-                </motion.button>
+                </button>
               </motion.div>
             )}
 
